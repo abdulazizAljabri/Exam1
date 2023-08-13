@@ -40,11 +40,20 @@ public class TeacherReposetre {
         return false;
     }
 
-    public void removeTeacher(String id) {
-        for (int index = 0; index < teachers.size(); index++) {
-            if (teachers.get(index).getId().equals(id)) {
+//    public void removeTeacher(String id) {
+//        for (int index = 0; index < teachers.size(); index++) {
+//            if (teachers.get(index).getId().equals(id)) {
+//                teachers.remove(index);
+//            }
+//        }
+//    }
+    public boolean removeTeacher(String id){
+        for (int index = 0; index < teachers.size(); index++){
+            if(teachers.get(index).getId().equals(id)){
                 teachers.remove(index);
+                return true;
             }
         }
+        return false;
     }
 }

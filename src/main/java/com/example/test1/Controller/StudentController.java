@@ -45,7 +45,6 @@ public class StudentController {
     }
 
 
-
     @DeleteMapping("/deletstudent/{id}")
     public ResponseEntity removeStudent(@PathVariable String id) {
         boolean isDelete =studentService.removeStudent(id);

@@ -11,7 +11,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-
 @RestController
 @RequestMapping("/api/v1/teacher")
 @RequiredArgsConstructor
@@ -44,12 +43,14 @@ public class TeacherController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiRespones("Teacher not found"));
     }
 
-
-    @DeleteMapping("/delteteacher/{id}")
-    public ResponseEntity removeTeacher(@PathVariable String id){
-        teacherReposetre.removeTeacher(id);
+@DeleteMapping("/delteteacher/{id}")
+public ResponseEntity removeTeacher(@PathVariable String id) {
+    boolean isDelete = teacherReposetre.removeTeacher(id);
+    if (isDelete) {
         return ResponseEntity.status(HttpStatus.OK).body(new ApiRespones("success removeTeacher"));
     }
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiRespones("Teacher not found"));
+}
 
     @GetMapping("/teacher/{id}")
     public ResponseEntity<Teacher> getTeacher(@PathVariable String id) {
